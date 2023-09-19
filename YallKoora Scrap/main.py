@@ -54,20 +54,20 @@ def main(page):
             match_week_list.append(match_week)
             team_A_list.append(team_A)
             team_B_list.append(team_B)
-            match_time_list.append(match_time)
             score_list.append(score)
+            match_time_list.append(match_time)
 
     for i in range(len(championships)):
         get_match_info(championships[i])
 
-    file_list = [championship_title_list, match_week_list, team_A_list, team_B_list, match_time_list, score_list]
+    file_list = [championship_title_list, match_week_list, team_A_list, team_B_list, score_list, match_time_list]
     exported = zip_longest(*file_list)
 
-    with open('D:\web scraping\YallKoora Scrap\matches_details.csv', 'w', encoding="utf-8") as output_file:
+    with open('D:\web scraping\YallKoora Scrap\matches_details.csv', 'w', encoding="utf-8-sig") as output_file:
         wr = csv.writer(output_file)
-        wr.writerow(['championship Title, Match Week , Team A, Team B, Time, Score'])
+        wr.writerow(['championship Title', 'Match Week', 'Team A', 'Team B', 'Score', 'Time'])
         wr.writerows(exported)
-        output_file.close()
         print('File Created')
+
 
 main(page)
